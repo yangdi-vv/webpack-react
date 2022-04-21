@@ -4,7 +4,7 @@ btnOpacity = 0.8
 
 .btn
   color #797979
-  border-radius 1px
+  border-radius 2px
   border btnBorder
   outline none
   appearance none
@@ -13,22 +13,26 @@ btnOpacity = 0.8
   align-items center
   text-align center
   background-color bgWhite
+
   &_default
     font-size 12px
     padding 6px 10px
     &:hover
       opacity btnOpacity
+
   &_large
     font-size 14px
-    padding 8px 14px
+    padding 10px 12px
     &:hover
       opacity btnOpacity
+
   &_disabled
     background gray
     color #fff
     cursor not-allowed
     &:hover
       opacity 1
+
   &_fluid
     width 100%
     &:hover

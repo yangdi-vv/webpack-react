@@ -1,3 +1,4 @@
+// mobx stores
 import MobxStore from './MobxStore'
 
 export default {

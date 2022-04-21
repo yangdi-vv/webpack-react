@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "./index.styl";
+import React, { Component } from 'react';
+import './index.styl';
 
 function getClassName(nameObj: any){
     let className = '';
@@ -22,12 +22,11 @@ class Button extends Component <{
     }
     render(){
         const { size, disabled, onClick, fluid } = this.props;
-        console.log(size, disabled, onClick, fluid);
         const className = getClassName({
             btn: true,
             [`btn_${size ? size : 'default'}`]: size,
-            [`btn_${disabled}`]: disabled,
-            [`btn_${fluid ? 'fluid' : ''}`]: fluid,
+            btn_disabled: disabled,
+            btn_fluid: fluid,
         });
         return (
             <button className={className} onClick={() => {onClick()}}>

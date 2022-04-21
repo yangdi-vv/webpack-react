@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import "./index.styl"
+
 class Dialog extends Component<any, any> {
+    constructor(props) {
+        super(props);
+    }
     render() {
+        const className = `invite-mask ${this.props.className}`;
         return this.props.visible ? (
-            <div className="invite-mask">
+            <div className={className}>
                 <div className="invite-dialog">
                     <span className="dialog-close" onClick={() => {this.props.close()}}>x</span>
                     {this.props.header ?

@@ -12,15 +12,17 @@ class Message {
             document.body.appendChild(this.messageDom)
         }
     }
-    alert(text: string, duration?: number, type?: string){
+    alert(text: string, type?: string){
         const textDom = document.createElement('span');
         textDom.innerText = text;
+        textDom.className = `message_${type}`;
         this.messageDom.appendChild(textDom);
-        // textDom.style.transition = 'all ease 3s';
-        // textDom.style.opacity = '0';
         setTimeout(() => {
             textDom.remove();
-        }, duration || 3000);
+        },3000);
+    }
+    error(text){
+        this.alert(text, 'error')
     }
 }
 

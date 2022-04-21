@@ -2,21 +2,34 @@
   position fixed
   top 100px
   left 50%
-  width 100px
-  margin-left -50px
+  width 400px
+  margin-left -200px
+  text-align center
   span
+    opacity 0
     display inline-block
     margin-bottom 6px
     padding 3px 6px
-    border 1px solid gray
-    animation message .5s
+    animation showMessage 3s
     background-color #fff
-    //transition all ease 3s
+    box-shadow 0 2px 8px 0 #8f8c8c
+    border none
+    border-radius 2px
+    &.message_error
+      color red
 
-@keyframes message
+@keyframes showMessage
   0% {
     opacity 0
   }
-  100% {
+  20% {
     opacity 1
+  }
+  80% {
+    opacity 1
+    height auto
+  }
+  100% {
+    opacity 0
+    height 0
   }
