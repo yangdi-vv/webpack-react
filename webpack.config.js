@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
-    mode: "development",
+    mode: 'development',
     entry: './src/index.js',
     module: {
         rules: [
@@ -52,7 +52,12 @@ module.exports = {
         //自动打开默认浏览器
         open: true,
         // 代理设置
-        proxy: {}
+        proxy: {
+            '/prod/fake-auth': {
+                target: 'https://l94wc2001h.execute-api.ap-southeast-2.amazonaws.com',
+                changeOrigin: true,
+            }
+        }
     },
     resolve: {
         extensions: ['.js', '.ts','.tsx', '.json'],

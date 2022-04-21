@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.styl';
+
 interface FullProps {
     header?: any,
     content?: any,

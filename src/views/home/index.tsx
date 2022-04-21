@@ -8,6 +8,8 @@ import Button from "../../components/application/button/index";
 import Dialog from "../../components/application/dialog";
 import Input from "../../components/application/input";
 import Message from "../../components/application/message";
+import { _request } from "../../utils";
+import { sendEmailUrl } from "../../api";
 interface IMobxStore {
     name: string;
     greeting: string;
@@ -31,6 +33,7 @@ class App extends Component <{
     emailRef: any,
     emailConfirmRef: any,
     nameRef: any,
+    errorMessage: any,
 }> {
     constructor(props) {
         super(props);
@@ -43,22 +46,40 @@ class App extends Component <{
             emailRef: React.createRef(),
             emailConfirmRef: React.createRef(),
             nameRef: React.createRef(),
+            errorMessage: ''
         };
     }
     async send() {
-        console.log(this.state.nameRef, this.state.emailRef)
+
         const isOkName = await this.state.nameRef.current.validateInput();
         const isOkEmail = await this.state.emailRef.current.validateInput();
-        const isOkEmailConfirm = await this.state.nameRef.current.validateInput();
+        const isOkEmailConfirm = await this.state.emailConfirmRef.current.validateInput();
 
-        debugger
         if ([isOkName, isOkEmail, isOkEmailConfirm].every((item) => item)) {
-            this.setState({
-                showSendDialog: false,
-                showDoneDialog: true
+            const {name, email} = this.state;
+            _request({
+                type: 'post',
+                url: sendEmailUrl,
+                data: {name, email},
+                success: (res) => {
+                    if(res === "Registered"){
+                        this.setState({
+                            showSendDialog: false,
+                            showDoneDialog: true
+                        });
+                    }else{
+                        Message.error('Request error!');
+                    }
+                },
+                error: (error) => {
+
+                },
+                fail: (error) => {
+
+                },
             });
         }else{
-            Message.error("Please check the input format!");
+            Message.error('Please check the input format!');
         }
     }
     render() {
@@ -129,6 +150,7 @@ class App extends Component <{
                                                rules={{
                                                    require: true,
                                                    callback: (value)=>{
+                                                       debugger
                                                        return email === value
                                                    },
                                                    message: 'Inconsistent mailbox input'

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./index.styl"
+import './index.styl';
 
 class Dialog extends Component<any, any> {
     constructor(props) {
@@ -7,6 +7,7 @@ class Dialog extends Component<any, any> {
     }
     render() {
         const className = `invite-mask ${this.props.className}`;
+
         return this.props.visible ? (
             <div className={className}>
                 <div className="invite-dialog">

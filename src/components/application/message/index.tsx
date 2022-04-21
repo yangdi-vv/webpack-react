@@ -1,6 +1,3 @@
-import React, { Component } from 'react';
-import "./index.styl"
-
 class Message {
     messageDom?: any
     constructor() {
@@ -12,7 +9,7 @@ class Message {
             document.body.appendChild(this.messageDom)
         }
     }
-    alert(text: string, type?: string){
+    alert(text: string, type?: string) {
         const textDom = document.createElement('span');
         textDom.innerText = text;
         textDom.className = `message_${type}`;
@@ -21,7 +18,7 @@ class Message {
             textDom.remove();
         },3000);
     }
-    error(text){
+    error(text) {
         this.alert(text, 'error')
     }
 }

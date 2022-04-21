@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "./index.styl"
 
-class Input extends Component<any, any>{
+class Input extends Component<any, any> {
     constructor(props) {
         super(props);
         this.state = {
@@ -17,12 +17,13 @@ class Input extends Component<any, any>{
     //     }
     //     return {};
     // }
-    validateInput(){
+    validateInput() {
         // return validate promise
         return new Promise((re) => {
             const {rules, value} = this.props;
+
             if(rules){
-                // check is ok width params
+                // check params && return result
                 const {reg, require, maxLength, callback} = rules;
                 const isOk_reg = reg ? reg.test(value) : true;
                 const isOk_require = require ? value.length > 0 : true;
@@ -32,10 +33,9 @@ class Input extends Component<any, any>{
                 this.setState({
                     showError: !isOK
                 })
-                // debugger
-                console.log(isOK, "name");
                 re(isOK);
             } else {
+                // no need check params
                 this.setState({
                     showError: false
                 })
@@ -53,7 +53,7 @@ class Input extends Component<any, any>{
     render(){
         const { showError } = this.state;
         const { placeholder, rules = {} } = this.props;
-        console.log(placeholder, rules)
+
         return (
             <div className="invite-input">
                 <input placeholder={placeholder} type="text" className="input"

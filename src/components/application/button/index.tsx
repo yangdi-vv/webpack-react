@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './index.styl';
 
-function getClassName(nameObj: any){
+function getClassName(nameObj: any) {
     let className = '';
     for(let key in nameObj) {
             nameObj[key] && (className = `${className} ${key}`)
