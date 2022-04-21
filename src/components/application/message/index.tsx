@@ -16,8 +16,8 @@ class Message {
         const textDom = document.createElement('span');
         textDom.innerText = text;
         this.messageDom.appendChild(textDom);
-        textDom.style.transition = 'all ease 3s';
-        textDom.style.opacity = '0';
+        // textDom.style.transition = 'all ease 3s';
+        // textDom.style.opacity = '0';
         setTimeout(() => {
             textDom.remove();
         }, duration || 3000);

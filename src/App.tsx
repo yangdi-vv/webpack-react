@@ -45,10 +45,9 @@ class App extends Component <{
                             Be the first to know when we launch.
                         </article>
                         <Button size="large" type="default" onClick={() => {
-                            Message.alert("测试测试");
-                            // this.setState({
-                            //     modalVisible: true
-                            // });
+                            this.setState({
+                                modalVisible: true
+                            });
                         }}>Request an invite</Button>
 
                         <Dialog visible={this.state.modalVisible}
@@ -68,7 +67,9 @@ class App extends Component <{
                                     </div>
                                 }
                                 footer={
-                                    <Button size="default" fluid>Send</Button>
+                                    <Button size="default" fluid onClick={() => {
+                                        Message.alert("请填写信息");
+                                    }}>Send</Button>
                                 }
                         >
                             <Button>send</Button>

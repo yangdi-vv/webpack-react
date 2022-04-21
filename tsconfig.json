@@ -22,9 +22,7 @@
     "rootDirs": ["./src"],
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["src/*"],
-      "@layout/*/*": ["src/*/*"],
-      "@layout/*": ["src/*"]
+//      "@/*": ["src/*"],
     }
   },
   "include": ["./src"],
