@@ -1,3 +1,4 @@
+const {resolve} = require('path');
 module.exports = {
     extends: ["eslint:recommended", "plugin:react/recommended"],
     env: {
@@ -21,6 +22,16 @@ module.exports = {
     },
     plugins: ["react", "standard", "promise", "@typescript-eslint"],
     settings: {
+        'import/resolver': {
+            alias: {
+                map: [
+                    ["@", resolve(__dirname, './src')],
+                    ["@components", resolve(__dirname, './src/components')],
+                    ["@application", resolve(__dirname, './src/components/application')],
+                    ["@layout", resolve(__dirname, './src/components/layout')],
+                ]
+            }
+        },
         "import/ignore": ["node_modules"],
         react: {
             version: "latest",

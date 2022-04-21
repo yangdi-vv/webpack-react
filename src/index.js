@@ -7,7 +7,6 @@ import { Provider } from 'mobx-react';
 import stores from './store/index.ts';
 
 
-
 ReactDOM.render(
     <Provider {...stores}>
         <Router history={createBrowserHistory()}>

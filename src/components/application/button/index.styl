@@ -1,0 +1,35 @@
+bgWhite = #fff
+btnBorder = 1px solid #797979
+btnOpacity = 0.8
+
+.btn
+  color #797979
+  border-radius 1px
+  border btnBorder
+  outline none
+  appearance none
+  cursor pointer
+  justify-content center
+  align-items center
+  text-align center
+  background-color bgWhite
+  &_default
+    font-size 12px
+    padding 6px 10px
+    &:hover
+      opacity btnOpacity
+  &_large
+    font-size 14px
+    padding 8px 14px
+    &:hover
+      opacity btnOpacity
+  &_disabled
+    background gray
+    color #fff
+    cursor not-allowed
+    &:hover
+      opacity 1
+  &_fluid
+    width 100%
+    &:hover
+      opacity 0.7

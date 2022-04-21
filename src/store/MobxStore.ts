@@ -14,7 +14,6 @@ class MobxStore implements IMobxStore {
 
     @action.bound
     public setName = (name: string): void => {
-        debugger
         this.name = name
     }
 

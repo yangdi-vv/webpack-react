@@ -22,9 +22,11 @@
     "rootDirs": ["./src"],
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@layout/*/*": ["src/*/*"],
+      "@layout/*": ["src/*"]
     }
   },
-  "include": ["./src/**/*"],
+  "include": ["./src"],
   "exclude": ["node_modules"]
 }
