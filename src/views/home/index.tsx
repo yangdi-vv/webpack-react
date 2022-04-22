@@ -34,6 +34,7 @@ class App extends Component <{
     emailConfirmRef: any,
     nameRef: any,
     errorMessage: any,
+    disabled: any,
 }> {
     constructor(props) {
         super(props);
@@ -46,7 +47,8 @@ class App extends Component <{
             emailRef: React.createRef(),
             emailConfirmRef: React.createRef(),
             nameRef: React.createRef(),
-            errorMessage: ''
+            errorMessage: '',
+            disabled: false,
         };
     }
     async send() {
@@ -56,6 +58,10 @@ class App extends Component <{
         const isOkEmailConfirm = await this.state.emailConfirmRef.current.validateInput();
 
         if ([isOkName, isOkEmail, isOkEmailConfirm].every((item) => item)) {
+            this.setState({
+                disabled: true
+            })
+
             const {name, email} = this.state;
             _request({
                 type: 'post',
@@ -72,10 +78,18 @@ class App extends Component <{
                     }
                 },
                 error: (error) => {
-
+                    console.log(error, 'error');
                 },
                 fail: (error) => {
-
+                    this.setState({
+                        errorMessage: error?.response?.data?.errorMessage
+                    });
+                    console.log(error?.response?.data?.errorMessage,this.state.errorMessage,  'fail');
+                },
+                final: (error) => {
+                    this.setState({
+                        disabled: false
+                    })
                 },
             });
         }else{
@@ -85,7 +99,7 @@ class App extends Component <{
     render() {
         const {showSendDialog, showDoneDialog,
             name, email, emailConfirm, emailRef,
-            emailConfirmRef, nameRef} = this.state;
+            emailConfirmRef, nameRef, disabled, errorMessage} = this.state;
 
         return (
             <Full
@@ -119,44 +133,46 @@ class App extends Component <{
                                 content={
                                     <div>
                                         <Input value={name}
+                                               disabled={disabled}
                                                rules={{
                                                    require: true,
-                                                   maxLength: 128,
-                                                   message: 'Please enter a 1-128 bit name'
+                                                   minLength: 3,
+                                                   message: 'Full name needs to be at least 3 characters long'
                                                }}
                                                placeholder="Full Name"
                                                ref={nameRef}
-                                               onClick={(value) => {
+                                               onChange={(value) => {
                                                     this.setState({
                                                         name: value
                                                     })
                                                 }}
                                         />
                                         <Input value={email}
+                                               disabled={disabled}
                                                placeholder="Email"
                                                rules={{
                                                    reg: /^([a-zA-Z\d])(\w|-)+@[a-zA-Z\d]+\.[a-zA-Z]{2,4}$/,
                                                    message: 'Please check the email format'
                                                }}
                                                ref={emailRef}
-                                               onClick={(value) => {
+                                               onChange={(value) => {
                                                    this.setState({
                                                        email: value
                                                    })
                                                }}
                                         />
                                         <Input value={emailConfirm}
+                                               disabled={disabled}
                                                placeholder="Confirm email"
                                                rules={{
                                                    require: true,
                                                    callback: (value)=>{
-                                                       debugger
-                                                       return email === value
+                                                       return email === emailConfirm
                                                    },
                                                    message: 'Inconsistent mailbox input'
                                                }}
                                                ref={emailConfirmRef}
-                                               onClick={(value) => {
+                                               onChange={(value) => {
                                                    this.setState({
                                                        emailConfirm: value
                                                    })
@@ -165,10 +181,17 @@ class App extends Component <{
                                     </div>
                                 }
                                 footer={
-                                    <Button size="default" fluid onClick={() => {
-                                        this.send();
-                                    }}
-                                    >Send</Button>
+                                    <>
+                                        <Button size="default" disabled={disabled} fluid onClick={() => {
+                                            this.send();
+                                        }}
+                                        >{disabled ? 'Senging, please wait...' : 'Send'}</Button>
+                                        {
+                                            errorMessage && <div className="error-message">
+                                                {errorMessage}
+                                            </div>
+                                        }
+                                    </>
                                 }
                         >
                         </Dialog>

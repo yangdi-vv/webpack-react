@@ -29,7 +29,7 @@ class Button extends Component <{
             btn_fluid: fluid,
         });
         return (
-            <button className={className} onClick={() => {onClick()}}>
+            <button className={className} onClick={() => {onClick()}} disabled={disabled}>
                 {this.props.children}
             </button>
         );

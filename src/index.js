@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 import stores from './store';
-import InviteRoute from "./router";
+import InviteRoute from './router';
 import './index.styl';
 
 // init react application
@@ -13,5 +13,3 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('app')
 );
-
-
