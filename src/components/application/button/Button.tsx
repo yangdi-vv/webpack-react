@@ -3,7 +3,7 @@ import './index.styl';
 
 function getClassName(nameObj: any) {
     let className = '';
-    for(let key in nameObj) {
+    for (let key in nameObj) {
         nameObj[key] && (className = `${className} ${key}`)
     }
     return className;
@@ -20,7 +20,7 @@ class Button extends Component <{
     constructor(props) {
         super(props);
     }
-    render(){
+    render() {
         const { size, disabled, onClick, fluid } = this.props;
         const className = getClassName({
             btn: true,

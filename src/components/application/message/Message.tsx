@@ -1,11 +1,11 @@
 class Message {
     messageDom?: any
     constructor() {
-        if(document.getElementById('invite-message')){
+        if (document.getElementById('invite-message')) {
             this.messageDom = document.getElementById('invite-message');
-        }else{
+        } else {
             this.messageDom = document.createElement('div');
-            this.messageDom.id = "invite-message";
+            this.messageDom.id = 'invite-message';
             document.body.appendChild(this.messageDom)
         }
     }
@@ -23,4 +23,4 @@ class Message {
     }
 }
 
-export default new Message()
+export default new Message();
