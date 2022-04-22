@@ -4,8 +4,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
     entry: './src/index.js',
+    output:{
+        path: resolve(__dirname, 'dist')
+    },
     module: {
         rules: [
             {
