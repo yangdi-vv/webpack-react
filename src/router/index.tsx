@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router';
 import { createBrowserHistory } from 'history';
-import Home from '../views/home';
+import Home from '../views/Home';
 
 function inviteRoute(){
     return (
