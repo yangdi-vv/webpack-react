@@ -1,0 +1,35 @@
+#invite-message
+  position fixed
+  top 100px
+  left 50%
+  width 400px
+  margin-left -200px
+  text-align center
+  span
+    opacity 0
+    display inline-block
+    margin-bottom 6px
+    padding 3px 6px
+    animation showMessage 3s
+    background-color #fff
+    box-shadow 0 2px 8px 0 #8f8c8c
+    border none
+    border-radius 2px
+    &.message_error
+      color red
+
+@keyframes showMessage
+  0% {
+    opacity 0
+  }
+  20% {
+    opacity 1
+  }
+  80% {
+    opacity 1
+    height auto
+  }
+  100% {
+    opacity 0
+    height 0
+  }
