@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
+    mode: 'production',
     entry: './src/index.js',
     output:{
         path: resolve(__dirname, 'dist')

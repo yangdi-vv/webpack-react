@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "cross-env ENV_LWD=development webpack serve  --mode=development --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cross-env ENV_LWD=production webpack --mode=production --config webpack.config.js"
+    "build": "webpack --config webpack.config.js"
   },
   "pre-commit": [
     "precommit",
@@ -30,6 +30,8 @@
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.9",
     "@babel/plugin-proposal-decorators": "^7.17.9",
+    "@babel/plugin-proposal-private-methods": "^7.16.11",
+    "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
