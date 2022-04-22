@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import {InputStateTypes, InputTypes} from '@models/components';
 import './index.styl';
 
-class Input extends Component<any, any> {
+class Input extends Component<InputTypes, InputStateTypes> {
     constructor(props) {
         super(props);
         this.state = {

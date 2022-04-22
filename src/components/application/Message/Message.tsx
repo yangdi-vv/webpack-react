@@ -1,5 +1,6 @@
+import './index.styl';
 class Message {
-    messageDom?: any
+    messageDom: any
     constructor() {
         if (document.getElementById('invite-message')) {
             this.messageDom = document.getElementById('invite-message');
@@ -15,7 +16,7 @@ class Message {
         textDom.className = `message_${type}`;
         this.messageDom.appendChild(textDom);
         setTimeout(() => {
-            textDom.remove();
+            // textDom.remove();
         },3000);
     }
     error(text) {

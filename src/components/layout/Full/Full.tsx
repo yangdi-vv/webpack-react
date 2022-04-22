@@ -2,9 +2,9 @@ import React from 'react';
 import './index.styl';
 
 interface FullProps {
-    header?: any,
-    content?: any,
-    footer?: any,
+    header?: React.ReactElement,
+    content?: React.ReactElement,
+    footer?: React.ReactElement,
 }
 
 class Full extends React.Component<FullProps, {}> {

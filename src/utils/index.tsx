@@ -1,16 +1,5 @@
 import axios from 'axios';
-
-interface requestParams {
-    type: string,
-    url: string,
-    data: any,
-    params?: any,
-    success?: any,
-    fail?: any,
-    error?: any,
-    final?: any,
-    timeout?: any,
-}
+import { requestParamsType } from '@models/utils';
 
 function _request({
                       type= 'get',
@@ -19,30 +8,19 @@ function _request({
                       params,
                       success,
                       fail,
-                      error,
                       final,
                       timeout,
-                  }: requestParams) {
+                  }: requestParamsType) {
     if(!url) {
         return Promise.reject('请求参数错误!');
     }
 
-    const obj = {
-        headers: {
-            'X-Timestamp': new Date().valueOf()
-        },
+    const obj:any = {
         timeout: timeout || 10000,
-        params: {
-            page_size: 999,
-            page_num: 1
-        }
     }
 
     if(params) {
-        obj.params = {
-            ...obj.params,
-            ...params
-        };
+        obj.params = params;
     }
 
     if(['get', 'delete'].includes(type)) {
@@ -68,6 +46,15 @@ function _request({
     }
 }
 
-export {
-    _request
+function getClassName(nameObj: object) {
+    let className = '';
+    for (let key in nameObj) {
+        nameObj[key] && (className = `${className} ${key}`)
+    }
+    return className;
 }
+
+export {
+    _request,
+    getClassName
+};

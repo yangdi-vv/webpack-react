@@ -1,22 +1,9 @@
 import React, { Component } from 'react';
+import { ButtonTypes } from '@models/components';
+import { getClassName } from '@utils/index';
 import './index.styl';
 
-function getClassName(nameObj: any) {
-    let className = '';
-    for (let key in nameObj) {
-        nameObj[key] && (className = `${className} ${key}`)
-    }
-    return className;
-}
-
-class Button extends Component <{
-    size?: any,
-    type?: any,
-    disabled?: any,
-    children?: any,
-    onClick?: any,
-    fluid?: any,
-}>{
+class Button extends Component <ButtonTypes, {}>{
     constructor(props) {
         super(props);
     }

@@ -1,6 +1,6 @@
 // mobx stores
-import MobxStore from './MobxStore'
+import HomeStore from './HomeStore'
 
 export default {
-    mobxStore: new MobxStore()
-}
+    HomeStore: new HomeStore()
+};

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { DialogTypes } from '@models/components';
 import './index.styl';
 
-class Dialog extends Component<any, any> {
+class Dialog extends Component<DialogTypes, {}> {
     constructor(props) {
         super(props);
     }

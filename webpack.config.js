@@ -48,13 +48,15 @@ module.exports = {
         new ESLintPlugin()
     ],
     devServer: {
-        //启动gzip压缩
+        // router when 404
+        historyApiFallback: true,
+        // gzip
         compress: true,
-        //端口
+        // port
         port: 8070,
-        //自动打开默认浏览器
+        // open bra
         open: true,
-        // 代理设置
+        // proxy
         proxy: {
             '/prod/fake-auth': {
                 target: 'https://l94wc2001h.execute-api.ap-southeast-2.amazonaws.com',
@@ -66,9 +68,14 @@ module.exports = {
         extensions: ['.js', '.ts','.tsx', '.json'],
         alias: {
             '@': resolve(__dirname, './src'),
+            '@views': resolve(__dirname, './src/views'),
+            '@models': resolve(__dirname, './src/models'),
             '@components': resolve(__dirname, './src/components'),
+            '@functional': resolve(__dirname, './src/components/functional'),
             '@application': resolve(__dirname, './src/components/application'),
-            '@layout': resolve(__dirname, './src/components/layout')
+            '@layout': resolve(__dirname, './src/components/layout'),
+            '@api': resolve(__dirname, './src/api'),
+            '@utils': resolve(__dirname, './src/utils')
         }
     }
 }
