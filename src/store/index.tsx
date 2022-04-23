@@ -1,4 +1,4 @@
-// mobx stores
+// home page stores
 import HomeStore from './HomeStore'
 
 export default {

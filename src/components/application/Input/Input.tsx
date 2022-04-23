@@ -11,8 +11,10 @@ class Input extends Component<InputTypes, InputStateTypes> {
         }
     }
     validateInput() {
+
         // return validate promise
         return new Promise((resolve) => {
+            // get params
             const {rules} = this.props;
             const {value} = this.state;
 
@@ -25,22 +27,30 @@ class Input extends Component<InputTypes, InputStateTypes> {
                 const isOk_minLength = minLength ? value.length >= minLength : true;
                 const isOk_callback = callback ? callback(value) : true;
                 const isOK = [isOk_reg, isOk_require, isOk_maxLength, isOk_minLength, isOk_callback].every((item) => item)
+
+                // show error status
                 this.setState({
                     showError: !isOK
                 })
+
                 resolve(isOK);
             } else {
-                // no need check params
+
+                // hide error status
                 this.setState({
                     showError: false
                 })
+
                 resolve(true);
             }
         });
     }
     inputHandler(e?: any) {
-        // change props + validate value
+
+        // change props && validate value
         this.props.onChange(e.target.value);
+
+        // set state && vaildate input
         this.setState({
             value: e.target.value
         }, () => {
@@ -48,6 +58,7 @@ class Input extends Component<InputTypes, InputStateTypes> {
         });
     }
     render() {
+        // get params
         const { showError } = this.state;
         const { placeholder, rules = {}, disabled } = this.props;
 

@@ -7,9 +7,9 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const smp = new SpeedMeasurePlugin();
 
 module.exports = smp.wrap({
-    mode: 'production',
     entry: './src/index.tsx',
     output:{
+        filename: 'js/[name]_[hash:8].js',
         path: resolve(__dirname, 'dist')
     },
     cache: {
@@ -17,11 +17,6 @@ module.exports = smp.wrap({
     },
     module: {
         rules: [
-            // {
-            //     test: /\.(js|jsx)$/,
-            //     loader: "babel-loader",
-            //     exclude: /node_modules/,
-            // },
             {
                 test: /\.tsx?$/,
                 use: ['babel-loader', 'ts-loader'],
@@ -35,10 +30,6 @@ module.exports = smp.wrap({
                     'stylus-loader'
                 ],
                 exclude: /node_modules/,
-            },
-            {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
-                loader: 'file-loader'
             }
         ],
     },
@@ -46,7 +37,7 @@ module.exports = smp.wrap({
         new CompressionWebpackPlugin(),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'send-email',
+            favicon: resolve(__dirname, './public/favicon.ico'),
             template: 'public/index.html'
         }),
         new ESLintPlugin()

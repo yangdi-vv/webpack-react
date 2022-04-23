@@ -1,14 +1,16 @@
 import React from 'react';
 
+// component Button interface
 export interface ButtonTypes {
-    size?: string,
-    type?: string,
-    disabled?: boolean,
-    children?: React.ReactNode,
-    onClick?: any,
-    fluid?: any,
+    size?: string;
+    type?: string;
+    disabled?: boolean;
+    children?: React.ReactNode;
+    onClick?: any;
+    fluid?: any;
 }
 
+// component Dialog interface
 export interface DialogTypes {
     children: never[];
     visible: boolean;
@@ -19,6 +21,7 @@ export interface DialogTypes {
     footer: React.ReactNode;
 }
 
+// component Input props interface
 export interface InputTypes {
     placeholder: string;
     disabled: boolean;
@@ -28,6 +31,7 @@ export interface InputTypes {
     onChange: (value: string) => void;
 }
 
+// component Input state interface
 export interface InputStateTypes {
     showError: boolean;
     value: string;

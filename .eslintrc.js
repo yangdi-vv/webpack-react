@@ -1,4 +1,5 @@
-const {resolve} = require('path');
+const { resolve } = require('path');
+
 module.exports = {
     extends: ["eslint:recommended", "plugin:react/recommended"],
     env: {

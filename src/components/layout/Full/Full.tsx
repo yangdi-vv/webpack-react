@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.styl';
 
+// interface for component props
 interface FullProps {
     header?: React.ReactElement,
     content?: React.ReactElement,
@@ -12,6 +13,7 @@ class Full extends React.Component<FullProps, {}> {
         super(props);
     }
     render() {
+        // get params
         const { header, content, footer} = this.props;
 
         return (

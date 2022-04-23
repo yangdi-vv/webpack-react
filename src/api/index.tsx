@@ -1,4 +1,4 @@
-// home
+// home page
 const sendEmailUrl = '/prod/fake-auth';
 
 export {

@@ -1,7 +1,7 @@
 # BROCCOLI & CO.
 
 ## Branch
->For development: dev
+> For development: dev
 
 > Release version: main
 

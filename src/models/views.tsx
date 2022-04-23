@@ -1,4 +1,4 @@
-import React from 'react';
+// home page interface
 export interface HomeTypes {
     showSendDialog: boolean,
     showDoneDialog: boolean,

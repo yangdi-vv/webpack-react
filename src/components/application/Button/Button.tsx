@@ -8,6 +8,7 @@ class Button extends Component <ButtonTypes, {}>{
         super(props);
     }
     render() {
+        // init button className
         const { size, disabled, onClick, fluid } = this.props;
         const className = getClassName({
             btn: true,
@@ -15,6 +16,7 @@ class Button extends Component <ButtonTypes, {}>{
             btn_disabled: disabled,
             btn_fluid: fluid,
         });
+
         return (
             <button className={className} onClick={() => {onClick()}} disabled={disabled}>
                 {this.props.children}

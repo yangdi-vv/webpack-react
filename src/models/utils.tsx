@@ -1,3 +1,4 @@
+// request interface
 export interface requestParamsType {
     type: string,
     url: string,

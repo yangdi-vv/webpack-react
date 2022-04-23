@@ -7,6 +7,7 @@ class Dialog extends Component<DialogTypes, {}> {
         super(props);
     }
     render() {
+        // init className
         const className = `invite-mask ${this.props.className}`;
 
         return this.props.visible && (

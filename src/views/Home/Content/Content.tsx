@@ -26,15 +26,18 @@ class Content extends Component <{},HomeTypes> {
     }
     async send() {
 
+        // check inputs before request
         const isOkName = await this.state.nameRef.current.validateInput();
         const isOkEmail = await this.state.emailRef.current.validateInput();
         const isOkEmailConfirm = await this.state.emailConfirmRef.current.validateInput();
 
         if ([isOkName, isOkEmail, isOkEmailConfirm].every((item) => item)) {
+            // disable button/input when sending request
             this.setState({
                 disabled: true
             })
 
+            // send request
             const {name, email} = this.state;
             _request({
                 type: 'post',
@@ -54,23 +57,27 @@ class Content extends Component <{},HomeTypes> {
                     console.log(error, 'error');
                 },
                 fail: (error) => {
+                    // show message when request error
                     this.setState({
                         errorMessage: error?.response?.data?.errorMessage
                     });
                     console.log(error?.response?.data?.errorMessage,this.state.errorMessage,  'fail');
                 },
                 final: (error) => {
+                    // enable button/input
                     this.setState({
                         disabled: false
                     })
                 },
             });
         }else{
+            // input error
             Message.error('Please check the input format!');
         }
     }
     render() {
 
+        // get params
         const {showSendDialog, showDoneDialog,
             name, email, emailConfirm, emailRef,
             emailConfirmRef, nameRef, disabled, errorMessage} = this.state;
