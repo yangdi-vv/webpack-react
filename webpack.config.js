@@ -1,25 +1,31 @@
 const { resolve } = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 const ESLintPlugin = require('eslint-webpack-plugin');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const smp = new SpeedMeasurePlugin();
 
-module.exports = {
+module.exports = smp.wrap({
     mode: 'production',
-    entry: './src/index.js',
+    entry: './src/index.tsx',
     output:{
         path: resolve(__dirname, 'dist')
     },
+    cache: {
+        type: 'filesystem'
+    },
     module: {
         rules: [
+            // {
+            //     test: /\.(js|jsx)$/,
+            //     loader: "babel-loader",
+            //     exclude: /node_modules/,
+            // },
             {
-                test: /\.(js|jsx)$/,
-                loader: "babel-loader",
+                test: /\.tsx?$/,
+                use: ['babel-loader', 'ts-loader'],
                 exclude: /node_modules/,
-            },
-            {
-                test: /\.tsx?$/i,
-                loader: "ts-loader",
-                exclude: /node_modules/
             },
             {
                 test: /\.styl(us)?$/,
@@ -27,11 +33,8 @@ module.exports = {
                     'style-loader',
                     'css-loader',
                     'stylus-loader'
-                ]
-            },
-            {
-                test: /\.(png|svg|jpg|gif|jpeg)$/,
-                loader: 'file-loader'
+                ],
+                exclude: /node_modules/,
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -40,6 +43,7 @@ module.exports = {
         ],
     },
     plugins: [
+        new CompressionWebpackPlugin(),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: 'send-email',
@@ -65,6 +69,7 @@ module.exports = {
         }
     },
     resolve: {
+        symlinks: false,
         extensions: ['.js', '.ts','.tsx', '.json'],
         alias: {
             '@': resolve(__dirname, './src'),
@@ -78,4 +83,4 @@ module.exports = {
             '@utils': resolve(__dirname, './src/utils')
         }
     }
-}
+});

@@ -14,6 +14,12 @@
 - Run
 > npm run serve
 
+##Front and rear end configuration
+- Front
+> React + Webpack
+  
+- Backend
+> Nodejs + nginx
 ##Access address
 > http://180.76.54.1/
 
