@@ -14,6 +14,9 @@ btnOpacity = 0.8
   text-align center
   background-color bgWhite
 
+  &:active
+    box-shadow 0 1px 2px gray
+
   &_default
     font-size 12px
     padding 6px 10px
@@ -27,8 +30,7 @@ btnOpacity = 0.8
       opacity btnOpacity
 
   &_disabled
-    background gray
-    color #fff
+    opacity 0.5
     cursor not-allowed
     &:hover
       opacity 1
