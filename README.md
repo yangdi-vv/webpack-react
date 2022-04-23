@@ -8,21 +8,22 @@
 ## Components
 > Self developed concise style
 
-##Start project
+## Start project
 - Install
 > npm install
 - Run
 > npm run serve
 
-##Front and rear end configuration
+## Front and rear end configuration
 - Front
 > React + Webpack
   
 - Backend
 > Nodejs + nginx
-##Access address
+
+## Access address
 > http://180.76.54.1/
 
-##Automated Deployment
+## Automated Deployment
 - Jenkins address
 > http://180.76.54.1:8080
