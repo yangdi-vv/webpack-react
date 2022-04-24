@@ -1,5 +1,8 @@
 # BROCCOLI & CO.
 
+## Access address
+> http://180.76.54.1/
+ 
 ## Branch
 > For development: dev
 
@@ -27,9 +30,6 @@
   
 - Backend
 > Nodejs + nginx
-
-## Access address
-> http://180.76.54.1/
 
 ## Automated Deployment
 - Jenkins address
