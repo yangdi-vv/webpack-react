@@ -14,7 +14,7 @@
 - Run
 > npm run serve
 
-## Front and rear end configuration
+## Front and Backend configuration
 - Front
 > React + Webpack
   
@@ -28,3 +28,4 @@
 - Jenkins address
 > http://180.76.54.1:8080
 > name: yd100200 password: 100200
+- Github Webhooks
